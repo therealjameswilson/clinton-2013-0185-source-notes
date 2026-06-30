@@ -1,14 +1,19 @@
 const DATA_URL = "data/entries.min.json";
 const SOURCE_PREFIX =
   "Source: Clinton Library, Clinton Presidential Records, National Security Council";
-const MAX_RESULTS = 250;
+const INITIAL_RESULTS = 1000;
+const RESULTS_BATCH = 1000;
+const SCROLL_LOAD_MARGIN = 1400;
 
 const state = {
   entries: [],
+  matches: [],
   query: "",
   part: "all",
   quality: "all",
   visible: [],
+  renderedCount: 0,
+  renderQueued: false,
 };
 
 const els = {
@@ -62,16 +67,25 @@ function matchesPart(entry) {
 }
 
 function applyFilters() {
-  const matches = state.entries.filter((entry) => matchesPart(entry) && matchesQuality(entry) && matchesQuery(entry));
-  state.visible = matches.slice(0, MAX_RESULTS);
-  renderResults(matches.length);
+  state.matches = state.entries.filter((entry) => matchesPart(entry) && matchesQuality(entry) && matchesQuery(entry));
+  state.visible = [];
+  state.renderedCount = 0;
+  els.body.replaceChildren();
+  appendResults(INITIAL_RESULTS);
 }
 
-function renderResults(totalMatches) {
-  els.body.replaceChildren();
-  els.resultCount.textContent = `${formatNumber(totalMatches)} matches; showing ${formatNumber(state.visible.length)}`;
+function updateResultCount() {
+  const totalMatches = state.matches.length;
+  const shown = state.visible.length;
+  const showingText = shown === totalMatches ? `showing all ${formatNumber(shown)}` : `showing ${formatNumber(shown)}`;
+  els.resultCount.textContent = `${formatNumber(totalMatches)} matches; ${showingText}`;
+}
 
-  if (!state.visible.length) {
+function appendResults(count) {
+  const totalMatches = state.matches.length;
+
+  if (!totalMatches) {
+    updateResultCount();
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 5;
@@ -82,8 +96,12 @@ function renderResults(totalMatches) {
     return;
   }
 
+  const nextEntries = state.matches.slice(state.renderedCount, state.renderedCount + count);
+  state.visible.push(...nextEntries);
+  state.renderedCount += nextEntries.length;
+
   const fragment = document.createDocumentFragment();
-  state.visible.forEach((entry) => {
+  nextEntries.forEach((entry) => {
     const row = els.rowTemplate.content.firstElementChild.cloneNode(true);
     const note = sourceNote(entry);
     row.querySelector(".source-note").textContent = note;
@@ -108,6 +126,28 @@ function renderResults(totalMatches) {
     fragment.appendChild(row);
   });
   els.body.appendChild(fragment);
+  updateResultCount();
+  queueScrollCheck();
+}
+
+function hasMoreResults() {
+  return state.renderedCount < state.matches.length;
+}
+
+function nearPageBottom() {
+  const scrollBottom = window.scrollY + window.innerHeight;
+  return document.documentElement.scrollHeight - scrollBottom < SCROLL_LOAD_MARGIN;
+}
+
+function queueScrollCheck() {
+  if (state.renderQueued) return;
+  state.renderQueued = true;
+  requestAnimationFrame(() => {
+    state.renderQueued = false;
+    if (hasMoreResults() && nearPageBottom()) {
+      appendResults(RESULTS_BATCH);
+    }
+  });
 }
 
 async function copyText(text, successMessage) {
@@ -177,6 +217,16 @@ els.reset.addEventListener("click", () => {
   els.copyStatus.textContent = "";
   applyFilters();
 });
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (hasMoreResults() && nearPageBottom()) {
+      appendResults(RESULTS_BATCH);
+    }
+  },
+  { passive: true },
+);
 
 els.copyVisible.addEventListener("click", () => {
   const notes = state.visible.map(sourceNote).join("\n");
