@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Copy-pasteable FRUS-style source-note metadata entries for Clinton Library 2013-0185-M."
+    />
+    <title>Clinton 2013-0185-M Source Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">William J. Clinton Presidential Library</p>
+        <h1>2013-0185-M Source Notes</h1>
+      </div>
+      <nav class="download-nav" aria-label="Downloads">
+        <a href="downloads/clinton-2013-0185-m-source-note-entries.md">Markdown</a>
+        <a href="downloads/clinton-2013-0185-m-source-note-entries.txt">Text</a>
+        <a href="downloads/clinton-2013-0185-m-source-note-entries.csv">CSV</a>
+        <a href="downloads/clinton-2013-0185-m-source-note-entries.json">JSON</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="workbench" aria-labelledby="browser-heading">
+        <div class="controls-column">
+          <div class="summary-band" id="summaryBand">
+            <div>
+              <span class="metric" id="entryCount">--</span>
+              <span class="metric-label">entries</span>
+            </div>
+            <div>
+              <span class="metric" id="pageCount">--</span>
+              <span class="metric-label">PDF pages</span>
+            </div>
+            <div>
+              <span class="metric" id="restrictionCount">--</span>
+              <span class="metric-label">restriction markers</span>
+            </div>
+          </div>
+
+          <h2 id="browser-heading">Copy-Paste Browser</h2>
+          <div class="control-grid">
+            <label class="field span-2">
+              <span>Search</span>
+              <input id="searchInput" type="search" placeholder="NATO, Bosnia, OA/ID 1713, Soderberg" />
+            </label>
+            <label class="field">
+              <span>Part</span>
+              <select id="partFilter">
+                <option value="all">All parts</option>
+                <option value="1">Part 1</option>
+                <option value="2">Part 2</option>
+                <option value="3">Part 3</option>
+                <option value="4">Part 4</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Rows</span>
+              <select id="qualityFilter">
+                <option value="all">All rows</option>
+                <option value="review">Review flagged</option>
+                <option value="no-office">Office not legible</option>
+                <option value="restriction">Restriction marker</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="action-row">
+            <button id="copyVisible" type="button">Copy Visible Source Notes</button>
+            <button id="resetFilters" type="button">Reset</button>
+            <span id="copyStatus" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <figure class="source-preview">
+          <img src="assets/finding-aid-preview.png" alt="Preview of a 2013-0185-M finding-aid table page" />
+          <figcaption>Finding-aid table source, Part 1, PDF p. 2</figcaption>
+        </figure>
+      </section>
+
+      <section class="results-section" aria-labelledby="results-heading">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">Source note entries</p>
+            <h2 id="results-heading">Results</h2>
+          </div>
+          <p id="resultCount">Loading entries...</p>
+        </div>
+        <div class="results-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Source Note</th>
+                <th scope="col">OA/ID</th>
+                <th scope="col">Part</th>
+                <th scope="col">PDF Page</th>
+                <th scope="col">Copy</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="rowTemplate">
+      <tr>
+        <td>
+          <p class="source-note"></p>
+          <p class="row-meta"></p>
+        </td>
+        <td class="oa-cell"></td>
+        <td class="part-cell"></td>
+        <td class="page-cell"></td>
+        <td><button class="copy-row" type="button">Copy</button></td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

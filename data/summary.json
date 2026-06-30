@@ -1,0 +1,259 @@
+{
+  "generated_at": "2026-06-29T20:08:13+00:00",
+  "source_files": [
+    {
+      "part": 1,
+      "file": "2013-0185-M_Part1.pdf",
+      "pages": 375
+    },
+    {
+      "part": 2,
+      "file": "2013-0185-M_Part2.pdf",
+      "pages": 376
+    },
+    {
+      "part": 3,
+      "file": "2013-0185-M_Part3.pdf",
+      "pages": 356
+    },
+    {
+      "part": 4,
+      "file": "2013-0185-M_Part4.pdf",
+      "pages": 183
+    }
+  ],
+  "entry_count": 42417,
+  "pages_processed": 1290,
+  "counts_by_part": {
+    "1": 12661,
+    "2": 11970,
+    "3": 10980,
+    "4": 6806
+  },
+  "top_office_or_series": [
+    [
+      "Records Management",
+      2478
+    ],
+    [
+      "Defense Policy-Bell, Robert",
+      1921
+    ],
+    [
+      "Staff Director-Soderberg, Nancy",
+      1072
+    ],
+    [
+      "NSC Admin-Dimel, Marsha",
+      991
+    ],
+    [
+      "Speechwriting-Blinken, Antony",
+      990
+    ],
+    [
+      "Speechwriting-Boorstin, Robert",
+      912
+    ],
+    [
+      "Multilateral & Humanitarian Affairs-Schwartz, Eric",
+      755
+    ],
+    [
+      "Legal Advisor-Derosa, Mary",
+      735
+    ],
+    [
+      "Inter-American Affairs",
+      592
+    ],
+    [
+      "NSC Admin/Security",
+      588
+    ],
+    [
+      "Nonproliferation and Export Controls-Harris, Elisa",
+      563
+    ],
+    [
+      "Legal Advisor-Baker, James",
+      561
+    ],
+    [
+      "Nonproliferation and Export Controls-Samore, Gary",
+      491
+    ],
+    [
+      "European Affairs-Vershbow, Alexander",
+      465
+    ],
+    [
+      "Transnational Threats-Clarke, Richard",
+      439
+    ],
+    [
+      "Defense Policy-Andreasen, Steven",
+      420
+    ],
+    [
+      "Press-Gobush, Matthew",
+      401
+    ],
+    [
+      "Defense Policy-Binnendijk, Hans",
+      392
+    ],
+    [
+      "Transnational Threats-Simon, Steven",
+      377
+    ],
+    [
+      "Campaign/Transition-Soderberg, Nancy",
+      354
+    ],
+    [
+      "Defense Policy-Witkowsky, Anne",
+      349
+    ],
+    [
+      "Multilateral & Humanitarian Affairs-Smith, Peter",
+      334
+    ],
+    [
+      "NSC Admin-Baum, Russell",
+      307
+    ],
+    [
+      "NSC Admin/Security-Paliokas, John",
+      303
+    ],
+    [
+      "Counselor's Office-Schifter, Richard",
+      300
+    ],
+    [
+      "Strategic Planning-Bobbitt, Philip",
+      297
+    ],
+    [
+      "International Economic Affairs-Duncan, John",
+      280
+    ],
+    [
+      "Intelligence Programs-Tenet, George",
+      270
+    ],
+    [
+      "NSC Admin",
+      267
+    ],
+    [
+      "Office of the National Security Advisor-Berger, Samuel (Sandy)",
+      258
+    ],
+    [
+      "Democracy/Human Rights-Halperin, Morton",
+      256
+    ],
+    [
+      "European Affairs-Holl, Jane",
+      253
+    ],
+    [
+      "[office or series not legible in finding aid]",
+      247
+    ],
+    [
+      "Press-Crowley, Philip J. (PJ)",
+      242
+    ],
+    [
+      "European Affairs-Blinken, Antony",
+      241
+    ],
+    [
+      "Executive Secretary",
+      240
+    ],
+    [
+      "Speechwriting-Widmer, Edward",
+      239
+    ],
+    [
+      "Speechwriting-Benjamin, Daniel",
+      231
+    ],
+    [
+      "Nonproliferation and Export Controls-Poneman, Daniel",
+      229
+    ],
+    [
+      "Transnational Threats-Cressey, Roger",
+      229
+    ],
+    [
+      "Russia/Ukraine/Eurasian Affairs-Pifer, Steven",
+      228
+    ],
+    [
+      "White House Situation Room",
+      227
+    ],
+    [
+      "Access Management-Leary, William",
+      226
+    ],
+    [
+      "Global Affairs-Sheehan, Michael",
+      201
+    ],
+    [
+      "Legal Advisor-Kreczko, Alan",
+      191
+    ],
+    [
+      "Russia/Ukraine/Eurasian Affairs-Pascual, Carlos",
+      190
+    ],
+    [
+      "NSC Admin-Clark, Bronya",
+      188
+    ],
+    [
+      "International Economic Affairs-Samans, Richard",
+      178
+    ],
+    [
+      "Russia/Ukraine/Eurasian Affairs-Elkind, Jonathan",
+      177
+    ],
+    [
+      "Inter-American Affairs-Central Files",
+      171
+    ]
+  ],
+  "entries_with_restriction_markers": 48,
+  "entries_with_review_flags": 6546,
+  "review_flag_counts": {
+    "office-series-normalized": 1291,
+    "raw-folder-title-has-ocr-suspect": 3893,
+    "raw-office-series-has-ocr-suspect": 200,
+    "folder-title-withheld": 160,
+    "folder-title-normalized": 1610,
+    "office-series-not-legible": 247
+  },
+  "style_basis": {
+    "repository_first": true,
+    "locator_policy": "Part/PDF-page evidence is kept in finding_aid_locator and compiler_note, not in the copy-paste source_note line.",
+    "source_note_order": [
+      "repository",
+      "record collection",
+      "record group or series",
+      "release/request id",
+      "office or series",
+      "OA/ID",
+      "folder title",
+      "printed restriction marker, if present"
+    ]
+  }
+}
