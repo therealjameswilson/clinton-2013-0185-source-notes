@@ -16,6 +16,7 @@ from statistics import median
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORTS = ROOT / "downloads"
+DATA_DIR = ROOT / "data"
 SOURCE_PDF_DIR = ROOT / "source-pdfs"
 
 PDFS = [
@@ -26,7 +27,8 @@ PDFS = [
 ]
 
 COLLECTION = "Clinton Presidential Records"
-REPOSITORY = "William J. Clinton Presidential Library"
+REPOSITORY = "Clinton Library"
+FORMAL_REPOSITORY = "William J. Clinton Presidential Library"
 SERIES = "National Security Council"
 REQUEST_ID = "2013-0185-M"
 
@@ -35,6 +37,8 @@ JSON_PATH = REPORTS / f"{OUTPUT_BASE}.json"
 CSV_PATH = REPORTS / f"{OUTPUT_BASE}.csv"
 MD_PATH = REPORTS / f"{OUTPUT_BASE}.md"
 TXT_PATH = REPORTS / f"{OUTPUT_BASE}.txt"
+MIN_JSON_PATH = DATA_DIR / "entries.min.json"
+SUMMARY_PATH = DATA_DIR / "summary.json"
 
 ROW_RE = re.compile(r"^\s*(?P<oa>\d{2,5}[A-Z]?)\s{2,}(?P<body>.+?)\s*$")
 HEADER_RE = re.compile(r"\bOA/ID(?:\s+Number)?\b.*\bFolder\b.*\bNotes\b", re.I)
@@ -121,6 +125,14 @@ TITLE_FIXES = [
 ]
 
 SUSPECT_RE = re.compile(r"[!{}]|(?:\b[A-Za-z]+1\b)|(?:\[[^\]]*$)|(?:\([^\)]*$)")
+FINDING_AID_ARTIFACT_FIXES = [
+    (r"\b2013-0185-M\b", " "),
+    (r"\bKBH\s+\d{1,2}/\d{1,2}/\d{4}\b", " "),
+    (r"\bDECLASSIFIED\s+IN\s+PART\b", " "),
+    (r"\bPER\s*E\.?\s*[O0]\.?\s*13526\b", " "),
+    (r"\bPERE\.?\s*[O0]\.?\s*13526\b", " "),
+    (r"\bB?E\.?\s*[O0]\.?\s*13526(?:\s*3\.5\s*\(c\))?\b", " "),
+]
 
 
 def ascii_clean(value: str) -> str:
@@ -147,8 +159,15 @@ def clean_spaces(value: str) -> str:
     return value.strip()
 
 
-def clean_note(value: str) -> str:
+def strip_finding_aid_artifacts(value: str) -> str:
     value = clean_spaces(value)
+    for pattern, replacement in FINDING_AID_ARTIFACT_FIXES:
+        value = re.sub(pattern, replacement, value, flags=re.I)
+    return clean_spaces(value)
+
+
+def clean_note(value: str) -> str:
+    value = strip_finding_aid_artifacts(value)
     value = re.sub(
         r"(Nonproliferation and Export Controls-Samore, Gary/Poneman,)\s+\1",
         r"\1",
@@ -162,7 +181,7 @@ def clean_note(value: str) -> str:
 
 
 def clean_title(value: str) -> str:
-    value = clean_spaces(value)
+    value = strip_finding_aid_artifacts(value)
     for pattern, replacement in TITLE_FIXES:
         value = re.sub(pattern, replacement, value)
     value = re.sub(r"\s+-\s+", "-", value)
@@ -280,10 +299,9 @@ def split_continuation_body(line: str, note_col: int) -> tuple[str, str]:
 
 
 def title_for_source_note(title: str) -> str:
-    title = title.replace('"', "'")
     if title == "[folder title withheld in finding aid]":
         return "folder title withheld in finding aid"
-    return f'folder "{title}"'
+    return title
 
 
 def build_source_note(entry: dict) -> str:
@@ -291,15 +309,12 @@ def build_source_note(entry: dict) -> str:
         REPOSITORY,
         COLLECTION,
         SERIES,
-        REQUEST_ID,
         entry["office_or_series"],
         f"OA/ID {entry['oa_id']}",
         title_for_source_note(entry["folder_title"]),
     ]
-    source = f"Source: {', '.join(part for part in parts if part)}."
-    if entry["restriction_markers"]:
-        source += f" Finding aid restriction marker: {'; '.join(entry['restriction_markers'])}."
-    return source
+    source = f"Source: {', '.join(part for part in parts if part)}"
+    return source if source.endswith((".", "?", "!")) else f"{source}."
 
 
 def compiler_note(entry: dict) -> str:
@@ -387,6 +402,7 @@ def make_entry(
         "folder_title": title,
         "office_or_series": note,
         "repository": REPOSITORY,
+        "formal_repository": FORMAL_REPOSITORY,
         "record_collection": COLLECTION,
         "record_group_or_series": SERIES,
         "request_id": REQUEST_ID,
@@ -558,7 +574,7 @@ def write_csv(entries: list[dict]) -> None:
         "raw_folder_title",
     ]
     with CSV_PATH.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for entry in entries:
             row = dict(entry)
@@ -579,15 +595,20 @@ def write_markdown(entries: list[dict], summary: dict) -> None:
     lines.append("")
     lines.append("Source basis: attached finding-aid PDFs for 2013-0185-M.")
     lines.append("")
-    lines.append("Copy-paste source-note form:")
+    lines.append("Copy-paste FRUS source-note form:")
     lines.append("")
     lines.append(
-        "Source: William J. Clinton Presidential Library, Clinton Presidential Records, "
-        "National Security Council, 2013-0185-M, [office or series], OA/ID [number], "
-        'folder "[folder title]".'
+        "Source: Clinton Library, Clinton Presidential Records, National Security Council, "
+        "[office or series], OA/ID [number], [folder title]."
     )
     lines.append("")
-    lines.append("Compiler caution: these are folder-level metadata entries. The CSV/JSON include the Part/PDF-page locator and a verification note for final item-level source-note work.")
+    lines.append(
+        "Compiler caution: these are folder-level source-path entries. The CSV/JSON keep "
+        "the 2013-0185-M Part/PDF-page locator, restriction markers, and verification note "
+        "outside the copy-paste Source note so compilers can append item-level title/date, "
+        "classification/handling, attachments, annotations, excisions, and declassification "
+        "facts only after checking the original folder or document image."
+    )
     lines.append("")
     lines.append("## Summary")
     lines.append("")
@@ -637,16 +658,16 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
         "review_flag_counts": dict(flags),
         "style_basis": {
             "repository_first": True,
-            "locator_policy": "Part/PDF-page evidence is kept in finding_aid_locator and compiler_note, not in the copy-paste source_note line.",
+            "repository_form": REPOSITORY,
+            "formal_repository_name": FORMAL_REPOSITORY,
+            "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, and finding-aid restriction markers are kept in metadata fields, not in the copy-paste source_note line.",
             "source_note_order": [
                 "repository",
                 "record collection",
                 "record group or series",
-                "release/request id",
                 "office or series",
                 "OA/ID",
                 "folder title",
-                "printed restriction marker, if present",
             ],
         },
     }
@@ -655,10 +676,32 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
 def write_json(entries: list[dict], summary: dict) -> None:
     payload = {"summary": summary, "entries": entries}
     JSON_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    SUMMARY_PATH.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def write_browser_payload(entries: list[dict], summary: dict) -> None:
+    compact_entries = [
+        {
+            "id": entry["entry_id"],
+            "p": entry["part"],
+            "pg": entry["pdf_page"],
+            "seq": entry["sequence_on_page"],
+            "oa": entry["oa_id"],
+            "office": entry["office_or_series"],
+            "folder": entry["folder_title"],
+            "rest": entry["restriction_markers"],
+            "flags": entry["review_flags"],
+            "loc": entry["finding_aid_locator"],
+        }
+        for entry in entries
+    ]
+    payload = {"summary": summary, "entries": compact_entries}
+    MIN_JSON_PATH.write_text(json.dumps(payload, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def main() -> None:
     REPORTS.mkdir(parents=True, exist_ok=True)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     all_entries: list[dict] = []
     page_counts: dict[int, int] = {}
 
@@ -674,6 +717,7 @@ def main() -> None:
     write_csv(all_entries)
     write_txt(all_entries)
     write_markdown(all_entries, summary)
+    write_browser_payload(all_entries, summary)
 
     print(json.dumps({
         "entry_count": summary["entry_count"],

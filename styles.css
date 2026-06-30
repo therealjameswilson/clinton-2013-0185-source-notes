@@ -107,6 +107,13 @@ main {
   gap: 20px;
 }
 
+.style-note {
+  max-width: 78ch;
+  margin: -8px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .summary-band {
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, 1fr));

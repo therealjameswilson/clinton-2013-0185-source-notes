@@ -13,17 +13,17 @@ Static browser and download package for FRUS-style Clinton Library source-note m
 ## Source-Note Form
 
 ```text
-Source: William J. Clinton Presidential Library, Clinton Presidential Records, National Security Council, 2013-0185-M, [office or series], OA/ID [number], folder "[folder title]".
+Source: Clinton Library, Clinton Presidential Records, National Security Council, [office or series], OA/ID [number], [folder title].
 ```
 
-These are folder-level source-note leads. Before final publication, compilers should verify item-level document title/date, exact folder contents, classification/handling, attachments, annotations, excisions, and declassification markings against the original folder or document image.
+These are folder-level source-path leads in FRUS Source Note order. The 2013-0185-M Part/PDF-page locator, printed restriction markers, and verification cautions stay in metadata fields rather than in the copyable Source note. Before final publication, compilers should append only verified item-level document title/date, exact folder contents, classification/handling, attachments, annotations, excisions, and declassification markings from the original folder or document image.
 
 ## Generated Counts
 
 - Entries: 42,417.
 - Finding-aid pages processed: 1,290.
 - Entries with printed restriction markers: 48.
-- Entries with review flags: 6,546.
+- Entries with review flags: 6,641.
 - Entries where office/series remained not legible after OCR/layout recovery: 247.
 
 ## Local Preview

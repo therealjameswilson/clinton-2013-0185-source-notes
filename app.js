@@ -1,6 +1,6 @@
 const DATA_URL = "data/entries.min.json";
 const SOURCE_PREFIX =
-  "Source: William J. Clinton Presidential Library, Clinton Presidential Records, National Security Council, 2013-0185-M";
+  "Source: Clinton Library, Clinton Presidential Records, National Security Council";
 const MAX_RESULTS = 250;
 
 const state = {
@@ -32,13 +32,12 @@ function formatNumber(value) {
 
 function folderForSource(folder) {
   if (folder === "[folder title withheld in finding aid]") return "folder title withheld in finding aid";
-  return `folder "${String(folder).replaceAll('"', "'")}"`;
+  return String(folder);
 }
 
 function sourceNote(entry) {
-  const base = `${SOURCE_PREFIX}, ${entry.office}, OA/ID ${entry.oa}, ${folderForSource(entry.folder)}.`;
-  if (!entry.rest || !entry.rest.length) return base;
-  return `${base} Finding aid restriction marker: ${entry.rest.join("; ")}.`;
+  const source = `${SOURCE_PREFIX}, ${entry.office}, OA/ID ${entry.oa}, ${folderForSource(entry.folder)}`;
+  return /[.?!]$/.test(source) ? source : `${source}.`;
 }
 
 function hasReviewFlag(entry) {

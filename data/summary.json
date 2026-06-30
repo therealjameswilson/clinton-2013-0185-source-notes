@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T20:08:13+00:00",
+  "generated_at": "2026-06-30T14:54:12+00:00",
   "source_files": [
     {
       "part": 1,
@@ -33,19 +33,19 @@
   "top_office_or_series": [
     [
       "Records Management",
-      2478
+      2479
     ],
     [
       "Defense Policy-Bell, Robert",
-      1921
+      1922
     ],
     [
       "Staff Director-Soderberg, Nancy",
-      1072
+      1074
     ],
     [
       "NSC Admin-Dimel, Marsha",
-      991
+      993
     ],
     [
       "Speechwriting-Blinken, Antony",
@@ -141,23 +141,23 @@
     ],
     [
       "Intelligence Programs-Tenet, George",
-      270
+      272
     ],
     [
       "NSC Admin",
       267
     ],
     [
+      "Democracy/Human Rights-Halperin, Morton",
+      258
+    ],
+    [
       "Office of the National Security Advisor-Berger, Samuel (Sandy)",
       258
     ],
     [
-      "Democracy/Human Rights-Halperin, Morton",
-      256
-    ],
-    [
       "European Affairs-Holl, Jane",
-      253
+      255
     ],
     [
       "[office or series not legible in finding aid]",
@@ -184,11 +184,11 @@
       231
     ],
     [
-      "Nonproliferation and Export Controls-Poneman, Daniel",
-      229
+      "Transnational Threats-Cressey, Roger",
+      230
     ],
     [
-      "Transnational Threats-Cressey, Roger",
+      "Nonproliferation and Export Controls-Poneman, Daniel",
       229
     ],
     [
@@ -209,7 +209,7 @@
     ],
     [
       "Legal Advisor-Kreczko, Alan",
-      191
+      193
     ],
     [
       "Russia/Ukraine/Eurasian Affairs-Pascual, Carlos",
@@ -233,27 +233,27 @@
     ]
   ],
   "entries_with_restriction_markers": 48,
-  "entries_with_review_flags": 6546,
+  "entries_with_review_flags": 6641,
   "review_flag_counts": {
-    "office-series-normalized": 1291,
+    "office-series-normalized": 1496,
     "raw-folder-title-has-ocr-suspect": 3893,
+    "folder-title-normalized": 1635,
     "raw-office-series-has-ocr-suspect": 200,
     "folder-title-withheld": 160,
-    "folder-title-normalized": 1610,
     "office-series-not-legible": 247
   },
   "style_basis": {
     "repository_first": true,
-    "locator_policy": "Part/PDF-page evidence is kept in finding_aid_locator and compiler_note, not in the copy-paste source_note line.",
+    "repository_form": "Clinton Library",
+    "formal_repository_name": "William J. Clinton Presidential Library",
+    "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, and finding-aid restriction markers are kept in metadata fields, not in the copy-paste source_note line.",
     "source_note_order": [
       "repository",
       "record collection",
       "record group or series",
-      "release/request id",
       "office or series",
       "OA/ID",
-      "folder title",
-      "printed restriction marker, if present"
+      "folder title"
     ]
   }
 }
