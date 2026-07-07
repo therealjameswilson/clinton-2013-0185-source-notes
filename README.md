@@ -4,7 +4,7 @@ Static browser and download package for FRUS-style Clinton Library source-note m
 
 ## Contents
 
-- `index.html`, `styles.css`, `app.js`: GitHub Pages browser with search, filters, and copy buttons.
+- `index.html`, `styles.css`, `app.js`: GitHub Pages browser with search, part, office/series, review-status filters, infinite 1,000-row loading, and copy buttons.
 - `data/entries.min.json`: compact browser payload.
 - `data/summary.json`: generation summary.
 - `downloads/`: full Markdown, text, CSV, and JSON exports.
@@ -20,11 +20,14 @@ These are folder-level source-path leads in FRUS Source Note order. The 2013-018
 
 ## Generated Counts
 
-- Entries: 42,417.
+- Entries: 42,413.
+- Unique source-note strings: 42,127.
+- Duplicate folder-level source-note strings retained as separate finding-aid rows: 286.
 - Finding-aid pages processed: 1,290.
-- Entries with printed restriction markers: 48.
-- Entries with review flags: 6,641.
-- Entries where office/series remained not legible after OCR/layout recovery: 247.
+- Entries with printed restriction markers: 274.
+- Entries with review flags: 6,258.
+- Entries where office/series remained not legible after OCR/layout recovery: 220.
+- Source-note validation counts for bad prefix, URLs, double spaces, structural punctuation errors, and restriction-marker leaks: 0.
 
 ## Local Preview
 

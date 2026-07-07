@@ -68,6 +68,8 @@ SKIP_LINE_PATTERNS = [
     r"^concerning wells",
     r"^2013-0185-M\s*$",
     r"^kh2069\s*$",
+    r"^\d{2,5}[A-Z]?\s*$",
+    r"^[:;.,\s]+$",
     r"^-+$",
 ]
 SKIP_LINE_RES = [re.compile(pattern, re.I) for pattern in SKIP_LINE_PATTERNS]
@@ -89,8 +91,11 @@ NOTEISH_RE = re.compile(
 )
 
 RESTRICTION_RES = [
-    re.compile(r"\bE\.?\s*O\.?\s*13526\s*3\.5\s*\(c\)\b", re.I),
-    re.compile(r"\bE\.?\s*O\.?\s*12958\s*3\.6\s*\(b\)\b", re.I),
+    re.compile(r"\bE\.?\s*O\.?\s*[:.-]?\s*13526\s*3\s*[.-]\s*5\s*\(?c\)?", re.I),
+    re.compile(r"\bE\.?\s*O\.?\s*[:.-]?\s*12958\s*3\s*[.-]\s*6\s*\(?b\)?", re.I),
+    re.compile(r"\bE\.?\s*O\.?\s*[:.-]?\s*3\s*[.-]\s*5\s*\(?c\)?", re.I),
+    re.compile(r"(?<![A-Za-z0-9])13526\s*3\s*[.-]\s*5\s*\(?c\)?(?![A-Za-z0-9])", re.I),
+    re.compile(r"(?<![A-Za-z0-9])3\s*[.-]\s*5\s*\(?c\)?(?![A-Za-z0-9])", re.I),
     re.compile(r"(?<![A-Za-z0-9])\(b\)\s*\([1-9]\)(?![A-Za-z0-9])", re.I),
     re.compile(r"(?<![A-Za-z0-9])b\([1-9]\)(?![A-Za-z0-9])", re.I),
     re.compile(r"\bP[1-6]\s*/\s*b\([1-9]\)\b", re.I),
@@ -105,7 +110,10 @@ NOTE_FIXES = [
     (r"\bSoutheastem\b", "Southeastern"),
     (r"\bNoriand\b", "Norland"),
     (r"\bHuriey\b", "Hurley"),
+    (r"\bHunley\b", "Hurley"),
     (r"\bDanie!\b", "Daniel"),
+    (r"\bDonaid\b", "Donald"),
+    (r"\bntelligence Programs\b", "Intelligence Programs"),
     (r"\bWippman,\s+David\s+et\s+al\.\b", "Wippman, David et al."),
     (r"\bMcE!ldowney\b", "McEldowney"),
     (r"\bMcEidowney\b", "McEldowney"),
@@ -132,6 +140,7 @@ FINDING_AID_ARTIFACT_FIXES = [
     (r"\bPER\s*E\.?\s*[O0]\.?\s*13526\b", " "),
     (r"\bPERE\.?\s*[O0]\.?\s*13526\b", " "),
     (r"\bB?E\.?\s*[O0]\.?\s*13526(?:\s*3\.5\s*\(c\))?\b", " "),
+    (r"\bE\.?\s*O\.?\s*[:.-]?\s*$", " "),
 ]
 
 
@@ -145,6 +154,7 @@ def ascii_clean(value: str) -> str:
         "\u2014": "-",
         "\u2212": "-",
         "\u00a0": " ",
+        "\u00a2": "c",
     }
     for old, new in replacements.items():
         value = value.replace(old, new)
@@ -157,6 +167,13 @@ def clean_spaces(value: str) -> str:
     value = re.sub(r"\s+", " ", value)
     value = re.sub(r"\s+([,.;:])", r"\1", value)
     return value.strip()
+
+
+def is_placeholder_text(value: str) -> bool:
+    value = clean_spaces(value)
+    if not value:
+        return True
+    return not re.search(r"[A-Za-z0-9]", value)
 
 
 def strip_finding_aid_artifacts(value: str) -> str:
@@ -175,9 +192,10 @@ def clean_note(value: str) -> str:
     )
     for pattern, replacement in NOTE_FIXES:
         value = re.sub(pattern, replacement, value)
+    value = re.sub(r"\b(Bosnia-Hurley, Michael)\s+\1\b", r"\1", value)
     value = re.sub(r"\s*-\s*", "-", value)
     value = re.sub(r",\s*,", ",", value)
-    return clean_spaces(value).rstrip(",")
+    return clean_spaces(value).strip(" ,;:")
 
 
 def clean_title(value: str) -> str:
@@ -186,7 +204,8 @@ def clean_title(value: str) -> str:
         value = re.sub(pattern, replacement, value)
     value = re.sub(r"\s+-\s+", "-", value)
     value = re.sub(r"\s*/\s*", "/", value)
-    return clean_spaces(value)
+    value = clean_spaces(value)
+    return "" if is_placeholder_text(value) else value
 
 
 def is_skip_line(line: str) -> bool:
@@ -256,6 +275,9 @@ def split_restrictions(value: str) -> tuple[str, list[str]]:
     def collect(match: re.Match[str]) -> str:
         marker = clean_spaces(match.group(0))
         marker = re.sub(r"\bE\.?\s*O\.?", "E.O.", marker, flags=re.I)
+        marker = re.sub(r"E\.O\.\s*[-.]?\s*", "E.O. ", marker, flags=re.I)
+        marker = re.sub(r"3\s*[.-]\s*5\s*\(?c\)?", "3.5(c)", marker, flags=re.I)
+        marker = re.sub(r"3\s*[.-]\s*6\s*\(?b\)?", "3.6(b)", marker, flags=re.I)
         marker = re.sub(r"\s+", " ", marker)
         if marker not in markers:
             markers.append(marker)
@@ -283,6 +305,14 @@ def split_row_body(line: str, oa_id: str, note_col: int) -> tuple[str, str]:
             return " ".join(fallback[:-1]), fallback[-1]
 
     return folder_part, note_part
+
+
+def split_row_with_wrapped_note(line: str, oa_id: str) -> tuple[str, str] | None:
+    id_end = line.find(oa_id) + len(oa_id)
+    fallback = re.split(r"\s{2,}", line[id_end:].strip())
+    if len(fallback) <= 1:
+        return None
+    return " ".join(fallback[:-1]), fallback[-1]
 
 
 def split_continuation_body(line: str, note_col: int) -> tuple[str, str]:
@@ -315,6 +345,32 @@ def build_source_note(entry: dict) -> str:
     ]
     source = f"Source: {', '.join(part for part in parts if part)}"
     return source if source.endswith((".", "?", "!")) else f"{source}."
+
+
+def validate_source_notes(entries: list[dict]) -> dict:
+    notes = [entry["source_note"] for entry in entries]
+    leak_patterns = [
+        re.compile(r"(?<!Executive Order )E\.O\.\s*13526\s*3\.5\(c\)", re.I),
+        re.compile(r"(?<!Executive Order )13526\s*3\.5\(c\)", re.I),
+        re.compile(r"3\.5\(c\)", re.I),
+        re.compile(r"3-5\(c\)", re.I),
+        re.compile(r"\bb\([1-9]\)", re.I),
+    ]
+    structural_bad_punct = re.compile(r"Security Council,\s*,|,\s*,\s*OA/ID|OA/ID\s+\d+[A-Z]?,\s*[.:;]+\.?$")
+    return {
+        "bad_prefix_count": sum(
+            not note.startswith("Source: Clinton Library, Clinton Presidential Records, National Security Council, ")
+            for note in notes
+        ),
+        "url_count": sum(("http://" in note or "https://" in note) for note in notes),
+        "double_space_count": sum("  " in note for note in notes),
+        "structural_bad_punctuation_count": sum(bool(structural_bad_punct.search(note)) for note in notes),
+        "restriction_marker_leak_count": sum(
+            any(pattern.search(note) for pattern in leak_patterns) for note in notes
+        ),
+        "unique_source_note_count": len(set(notes)),
+        "duplicate_source_note_count": len(notes) - len(set(notes)),
+    }
 
 
 def compiler_note(entry: dict) -> str:
@@ -429,6 +485,7 @@ def parse_page(part: int, pdf_page: int, page_text: str) -> list[dict]:
     pending_restrictions: list[str] = []
     previous_entry: dict | None = None
     sequence_on_page = 0
+    suppress_next_note_line = False
 
     for line in lines:
         if is_skip_line(line) or HEADER_RE.search(clean_spaces(line)):
@@ -437,6 +494,13 @@ def parse_page(part: int, pdf_page: int, page_text: str) -> list[dict]:
         row = ROW_RE.match(line)
         if row:
             oa_id = row.group("oa")
+            body_without_markers, body_markers = split_restrictions(row.group("body"))
+            if oa_id in {"13526", "12958"} and is_placeholder_text(body_without_markers):
+                pending_folder_lines = []
+                pending_note_lines = []
+                suppress_next_note_line = True
+                continue
+
             folder_text, note_text = split_row_body(line, oa_id, note_col)
             if pending_note_lines:
                 id_end = line.find(oa_id) + len(oa_id)
@@ -445,6 +509,10 @@ def parse_page(part: int, pdf_page: int, page_text: str) -> list[dict]:
                 if fixed_note:
                     folder_text = fixed_folder
                     note_text = fixed_note
+                else:
+                    wrapped = split_row_with_wrapped_note(line, oa_id)
+                    if wrapped:
+                        folder_text, note_text = wrapped
             restriction_source = " ".join([folder_text, note_text])
             restriction_source, row_markers = split_restrictions(restriction_source)
             if row_markers:
@@ -501,6 +569,18 @@ def parse_page(part: int, pdf_page: int, page_text: str) -> list[dict]:
                         previous_entry["restriction_markers"].append(marker)
                 refresh_entry(previous_entry)
                 continue
+
+        if suppress_next_note_line and start >= max(32, note_col - 42) and NOTEISH_RE.search(stripped):
+            suppress_next_note_line = False
+            continue
+        suppress_next_note_line = False
+
+        if start >= max(32, note_col - 42) and NOTEISH_RE.search(stripped):
+            pending_note_lines.append(stripped)
+            for marker in markers:
+                if marker not in pending_restrictions:
+                    pending_restrictions.append(marker)
+            continue
 
         if start >= note_col - 4 and NOTEISH_RE.search(stripped):
             pending_note_lines.append(stripped)
@@ -643,6 +723,7 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
     counts_by_part = Counter(str(entry["part"]) for entry in entries)
     counts_by_office = Counter(entry["office_or_series"] for entry in entries)
     flags = Counter(flag for entry in entries for flag in entry["review_flags"])
+    validation = validate_source_notes(entries)
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "source_files": [
@@ -655,7 +736,9 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
         "top_office_or_series": counts_by_office.most_common(50),
         "entries_with_restriction_markers": sum(1 for entry in entries if entry["restriction_markers"]),
         "entries_with_review_flags": sum(1 for entry in entries if entry["review_flags"]),
+        "office_or_series_count": len(counts_by_office),
         "review_flag_counts": dict(flags),
+        "validation": validation,
         "style_basis": {
             "repository_first": True,
             "repository_form": REPOSITORY,
@@ -683,6 +766,7 @@ def write_browser_payload(entries: list[dict], summary: dict) -> None:
     compact_entries = [
         {
             "id": entry["entry_id"],
+            "note": entry["source_note"],
             "p": entry["part"],
             "pg": entry["pdf_page"],
             "seq": entry["sequence_on_page"],

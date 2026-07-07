@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T14:54:12+00:00",
+  "generated_at": "2026-07-07T19:37:36+00:00",
   "source_files": [
     {
       "part": 1,
@@ -22,30 +22,30 @@
       "pages": 183
     }
   ],
-  "entry_count": 42417,
+  "entry_count": 42413,
   "pages_processed": 1290,
   "counts_by_part": {
     "1": 12661,
-    "2": 11970,
+    "2": 11966,
     "3": 10980,
     "4": 6806
   },
   "top_office_or_series": [
     [
       "Records Management",
-      2479
+      2488
     ],
     [
       "Defense Policy-Bell, Robert",
-      1922
+      1928
     ],
     [
       "Staff Director-Soderberg, Nancy",
-      1074
+      1078
     ],
     [
       "NSC Admin-Dimel, Marsha",
-      993
+      994
     ],
     [
       "Speechwriting-Blinken, Antony",
@@ -61,7 +61,7 @@
     ],
     [
       "Legal Advisor-Derosa, Mary",
-      735
+      736
     ],
     [
       "Inter-American Affairs",
@@ -72,16 +72,16 @@
       588
     ],
     [
-      "Nonproliferation and Export Controls-Harris, Elisa",
-      563
+      "Legal Advisor-Baker, James",
+      567
     ],
     [
-      "Legal Advisor-Baker, James",
-      561
+      "Nonproliferation and Export Controls-Harris, Elisa",
+      566
     ],
     [
       "Nonproliferation and Export Controls-Samore, Gary",
-      491
+      493
     ],
     [
       "European Affairs-Vershbow, Alexander",
@@ -89,11 +89,11 @@
     ],
     [
       "Transnational Threats-Clarke, Richard",
-      439
+      440
     ],
     [
       "Defense Policy-Andreasen, Steven",
-      420
+      423
     ],
     [
       "Press-Gobush, Matthew",
@@ -101,11 +101,11 @@
     ],
     [
       "Defense Policy-Binnendijk, Hans",
-      392
+      393
     ],
     [
       "Transnational Threats-Simon, Steven",
-      377
+      381
     ],
     [
       "Campaign/Transition-Soderberg, Nancy",
@@ -117,7 +117,7 @@
     ],
     [
       "Multilateral & Humanitarian Affairs-Smith, Peter",
-      334
+      335
     ],
     [
       "NSC Admin-Baum, Russell",
@@ -136,12 +136,12 @@
       297
     ],
     [
-      "International Economic Affairs-Duncan, John",
-      280
+      "Intelligence Programs-Tenet, George",
+      290
     ],
     [
-      "Intelligence Programs-Tenet, George",
-      272
+      "International Economic Affairs-Duncan, John",
+      282
     ],
     [
       "NSC Admin",
@@ -149,7 +149,7 @@
     ],
     [
       "Democracy/Human Rights-Halperin, Morton",
-      258
+      260
     ],
     [
       "Office of the National Security Advisor-Berger, Samuel (Sandy)",
@@ -160,16 +160,12 @@
       255
     ],
     [
-      "[office or series not legible in finding aid]",
-      247
-    ],
-    [
       "Press-Crowley, Philip J. (PJ)",
       242
     ],
     [
       "European Affairs-Blinken, Antony",
-      241
+      240
     ],
     [
       "Executive Secretary",
@@ -180,16 +176,16 @@
       239
     ],
     [
+      "Transnational Threats-Cressey, Roger",
+      235
+    ],
+    [
       "Speechwriting-Benjamin, Daniel",
       231
     ],
     [
-      "Transnational Threats-Cressey, Roger",
-      230
-    ],
-    [
       "Nonproliferation and Export Controls-Poneman, Daniel",
-      229
+      230
     ],
     [
       "Russia/Ukraine/Eurasian Affairs-Pifer, Steven",
@@ -204,8 +200,16 @@
       226
     ],
     [
+      "[office or series not legible in finding aid]",
+      220
+    ],
+    [
       "Global Affairs-Sheehan, Michael",
       201
+    ],
+    [
+      "Intelligence Programs-McCarthy, Mary",
+      195
     ],
     [
       "Legal Advisor-Kreczko, Alan",
@@ -226,21 +230,27 @@
     [
       "Russia/Ukraine/Eurasian Affairs-Elkind, Jonathan",
       177
-    ],
-    [
-      "Inter-American Affairs-Central Files",
-      171
     ]
   ],
-  "entries_with_restriction_markers": 48,
-  "entries_with_review_flags": 6641,
+  "entries_with_restriction_markers": 274,
+  "entries_with_review_flags": 6258,
+  "office_or_series_count": 1416,
   "review_flag_counts": {
-    "office-series-normalized": 1496,
-    "raw-folder-title-has-ocr-suspect": 3893,
-    "folder-title-normalized": 1635,
+    "office-series-normalized": 1019,
+    "raw-folder-title-has-ocr-suspect": 3898,
+    "folder-title-normalized": 1625,
     "raw-office-series-has-ocr-suspect": 200,
-    "folder-title-withheld": 160,
-    "office-series-not-legible": 247
+    "folder-title-withheld": 184,
+    "office-series-not-legible": 220
+  },
+  "validation": {
+    "bad_prefix_count": 0,
+    "url_count": 0,
+    "double_space_count": 0,
+    "structural_bad_punctuation_count": 0,
+    "restriction_marker_leak_count": 0,
+    "unique_source_note_count": 42127,
+    "duplicate_source_note_count": 286
   },
   "style_basis": {
     "repository_first": true,

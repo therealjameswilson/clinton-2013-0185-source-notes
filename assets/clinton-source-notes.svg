@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Clinton Source Notes</title>
+  <desc id="desc">Document icon for the Clinton 2013-0185-M source-note browser.</desc>
+  <rect width="64" height="64" rx="8" fill="#fffdf8"/>
+  <rect x="10" y="8" width="44" height="48" rx="3" fill="#ffffff" stroke="#2f6f73" stroke-width="3"/>
+  <path d="M18 22h28M18 31h28M18 40h20" stroke="#1f5155" stroke-width="4" stroke-linecap="round"/>
+  <path d="M13 12h38" stroke="#cfd8dd" stroke-width="2"/>
+</svg>
