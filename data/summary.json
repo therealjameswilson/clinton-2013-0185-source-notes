@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T19:37:36+00:00",
+  "generated_at": "2026-07-07T19:54:35+00:00",
   "source_files": [
     {
       "part": 1,
@@ -234,6 +234,172 @@
   ],
   "entries_with_restriction_markers": 274,
   "entries_with_review_flags": 6258,
+  "entries_with_nara_collection_naid": 42413,
+  "entries_with_nara_office_collection_naid": 41977,
+  "entries_with_nara_parent_collection_naid": 436,
+  "entries_with_nara_file_unit_naid": 0,
+  "nara_match_level_counts": {
+    "office_collection": 41977,
+    "parent_collection": 436
+  },
+  "top_nara_collections": [
+    [
+      "7386504 WJC-NSCDP",
+      4318
+    ],
+    [
+      "7385959 WJC-NSCAFA",
+      3015
+    ],
+    [
+      "7386505 WJC-NSCEA",
+      3004
+    ],
+    [
+      "7388842 WJC-NSCSW",
+      2657
+    ],
+    [
+      "7388808 WJC-NSCRM",
+      2500
+    ],
+    [
+      "7388766 WJC-NSCMHA",
+      2403
+    ],
+    [
+      "7388843 WJC-NSCTNT",
+      2169
+    ],
+    [
+      "7388835 WJC-NSCRUE",
+      2057
+    ],
+    [
+      "7388773 WJC-NSCNP",
+      1965
+    ],
+    [
+      "7388760 WJC-NSCLA",
+      1875
+    ],
+    [
+      "7385957 WJC-NSCA",
+      1839
+    ],
+    [
+      "7387655 WJC-NSCIE",
+      1772
+    ],
+    [
+      "7388751 WJC-NSCIP",
+      1644
+    ],
+    [
+      "7388836 WJC-NSCSD",
+      1146
+    ],
+    [
+      "7388805 WJC-NSCPC",
+      969
+    ],
+    [
+      "7385960 WJC-NSCAS",
+      894
+    ],
+    [
+      "7388800 WJC-NSCNSA",
+      795
+    ],
+    [
+      "7387422 WJC-NSCGI",
+      745
+    ],
+    [
+      "7385961 WJC-NSCASA",
+      684
+    ],
+    [
+      "7388768 WJC-NSCNE",
+      586
+    ],
+    [
+      "7388763 WJC-NSCLGA",
+      576
+    ],
+    [
+      "7385965 WJC-NSCDHR",
+      533
+    ],
+    [
+      "7386739 WJC-NSCES",
+      524
+    ],
+    [
+      "2525024 WJC-NSC",
+      436
+    ],
+    [
+      "7388838 WJC-NSCSP",
+      411
+    ],
+    [
+      "7385963 WJC-NSCC",
+      386
+    ],
+    [
+      "7388844 WJC-NSCTO",
+      368
+    ],
+    [
+      "7388837 WJC-NSCSEE",
+      336
+    ],
+    [
+      "7388753 WJC-NSCIS",
+      314
+    ],
+    [
+      "7386837 WJC-NSCGE",
+      313
+    ],
+    [
+      "7388840 WJC-NSCSR",
+      247
+    ],
+    [
+      "7385958 WJC-NSCAM",
+      242
+    ],
+    [
+      "7385964 WJC-NSCCEE",
+      232
+    ],
+    [
+      "7385962 WJC-NSCB",
+      132
+    ],
+    [
+      "7388775 WJC-NSCNS",
+      105
+    ],
+    [
+      "7388748 WJC-NSCIH",
+      71
+    ],
+    [
+      "7387424 WJC-NSCGWI",
+      65
+    ],
+    [
+      "7388841 WJC-NSCT",
+      51
+    ],
+    [
+      "7387463 WJC-NSCIA",
+      34
+    ]
+  ],
   "office_or_series_count": 1416,
   "review_flag_counts": {
     "office-series-normalized": 1019,
@@ -256,7 +422,8 @@
     "repository_first": true,
     "repository_form": "Clinton Library",
     "formal_repository_name": "William J. Clinton Presidential Library",
-    "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, and finding-aid restriction markers are kept in metadata fields, not in the copy-paste source_note line.",
+    "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, finding-aid restriction markers, and NARA Catalog IDs are kept in metadata fields, not in the copy-paste source_note line.",
+    "nara_identifier_policy": "Each entry receives a NARA Catalog collection NAID. Rows with reliable office/series matches receive the corresponding Clinton NSC office collection NAID; unresolved rows receive the parent Clinton NSC collection NAID. File-unit NAIDs are not asserted without a reliable Catalog-to-OA/ID crosswalk.",
     "source_note_order": [
       "repository",
       "record collection",

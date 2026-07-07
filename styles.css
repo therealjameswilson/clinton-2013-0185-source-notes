@@ -242,7 +242,7 @@ a:focus {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 960px;
+  min-width: 1120px;
 }
 
 th,
@@ -283,11 +283,18 @@ tr:last-child td {
 }
 
 .oa-cell,
+.nara-cell,
 .part-cell,
 .page-cell {
   white-space: nowrap;
   color: var(--muted);
   font-weight: 700;
+}
+
+.nara-cell a {
+  color: var(--accent-dark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .copy-row {

@@ -53,6 +53,18 @@ function hasReviewFlag(entry) {
   return Array.isArray(entry.flags) && entry.flags.length > 0;
 }
 
+function naraLabel(entry) {
+  if (entry.nfu) return `File NAID ${entry.nfu}`;
+  if (entry.nara) return `Collection NAID ${entry.nara}`;
+  return "NARA ID unavailable";
+}
+
+function naraDetail(entry) {
+  if (!entry.nara) return "";
+  const label = entry.nfu ? entry.nft : entry.nct;
+  return label ? `${naraLabel(entry)}: ${label}` : naraLabel(entry);
+}
+
 function populateOfficeFilter(entries) {
   const offices = [...new Set(entries.map((entry) => entry.office).filter(Boolean))].sort((a, b) =>
     a.localeCompare(b),
@@ -110,7 +122,7 @@ function appendResults(count) {
     updateResultCount();
     const row = document.createElement("tr");
     const cell = document.createElement("td");
-    cell.colSpan = 5;
+    cell.colSpan = 6;
     cell.className = "empty";
     cell.textContent = "No matching entries.";
     row.appendChild(cell);
@@ -127,12 +139,30 @@ function appendResults(count) {
     const row = els.rowTemplate.content.firstElementChild.cloneNode(true);
     const note = sourceNote(entry);
     row.querySelector(".source-note").textContent = note;
+    const naraCell = row.querySelector(".nara-cell");
+    if (entry.nurl && entry.nara) {
+      const link = document.createElement("a");
+      link.href = entry.nurl;
+      link.textContent = naraLabel(entry);
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      naraCell.appendChild(link);
+    } else {
+      naraCell.textContent = naraLabel(entry);
+    }
     row.querySelector(".oa-cell").textContent = entry.oa;
     row.querySelector(".part-cell").textContent = `Part ${entry.p}`;
     row.querySelector(".page-cell").textContent = entry.pg;
 
     const meta = row.querySelector(".row-meta");
     meta.textContent = `${entry.loc}.`;
+    const nara = naraDetail(entry);
+    if (nara) {
+      meta.append(` ${nara}.`);
+    }
+    if (entry.nmsg) {
+      meta.append(` ${entry.nmsg}`);
+    }
     if (hasReviewFlag(entry)) {
       const flags = document.createElement("strong");
       flags.textContent = ` Review: ${entry.flags.join(", ")}.`;
@@ -205,7 +235,9 @@ async function loadData() {
     haystack:
       `${entry.note || ""} ${entry.oa} ${entry.office} ${entry.folder} ${entry.loc} ${
         entry.flags?.join(" ") || ""
-      }`.toLowerCase(),
+      } ${entry.nara || ""} ${entry.ncol || ""} ${entry.nci || ""} ${entry.nct || ""} ${
+        entry.nfu || ""
+      } ${entry.nft || ""} ${entry.nmsg || ""}`.toLowerCase(),
   }));
 
   els.entryCount.textContent = formatNumber(summary.entry_count || state.entries.length);
@@ -273,7 +305,7 @@ loadData().catch((error) => {
   els.resultCount.textContent = "Unable to load entries.";
   const row = document.createElement("tr");
   const cell = document.createElement("td");
-  cell.colSpan = 5;
+  cell.colSpan = 6;
   cell.className = "empty";
   cell.textContent = error.message;
   row.appendChild(cell);

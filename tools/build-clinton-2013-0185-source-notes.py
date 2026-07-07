@@ -31,6 +31,256 @@ REPOSITORY = "Clinton Library"
 FORMAL_REPOSITORY = "William J. Clinton Presidential Library"
 SERIES = "National Security Council"
 REQUEST_ID = "2013-0185-M"
+NARA_PARENT_COLLECTION = {
+    "naid": "2525024",
+    "identifier": "WJC-NSC",
+    "title": "Records of the National Security Council (Clinton Administration)",
+}
+NARA_CATALOG_URL_BASE = "https://catalog.archives.gov/id/"
+
+NARA_COLLECTIONS = {
+    "access_management": {
+        "naid": "7385958",
+        "identifier": "WJC-NSCAM",
+        "title": "Records of the National Security Council Access Management Office (Clinton Administration)",
+    },
+    "administrative": {
+        "naid": "7385957",
+        "identifier": "WJC-NSCA",
+        "title": "Records of the National Security Council Administrative Office (Clinton Administration)",
+    },
+    "administration_security": {
+        "naid": "7385960",
+        "identifier": "WJC-NSCAS",
+        "title": "Records of the National Security Council Administration Security Office (Clinton Administration)",
+    },
+    "african_affairs": {
+        "naid": "7385959",
+        "identifier": "WJC-NSCAFA",
+        "title": "Records of the National Security Council African Affairs Office (Clinton Administration)",
+    },
+    "asian_affairs": {
+        "naid": "7385961",
+        "identifier": "WJC-NSCASA",
+        "title": "Records of the National Security Council Asian Affairs Office (Clinton Administration)",
+    },
+    "bosnia": {
+        "naid": "7385962",
+        "identifier": "WJC-NSCB",
+        "title": "Records of the National Security Council Bosnia Office (Clinton Administration)",
+    },
+    "central_eastern_europe": {
+        "naid": "7385964",
+        "identifier": "WJC-NSCCEE",
+        "title": "Records of the National Security Council Central and Eastern European Affairs Office (Clinton Administration)",
+    },
+    "counselors_office": {
+        "naid": "7385963",
+        "identifier": "WJC-NSCC",
+        "title": "Records of the National Security Council Counselor's Office (Clinton Administration)",
+    },
+    "defense_policy": {
+        "naid": "7386504",
+        "identifier": "WJC-NSCDP",
+        "title": "Records of the National Security Council Defense Policy and Arms Control Office (Clinton Administration)",
+    },
+    "democracy_human_rights": {
+        "naid": "7385965",
+        "identifier": "WJC-NSCDHR",
+        "title": "Records of the National Security Council Democracy, Human Rights, and Multilateral Affairs Office (Clinton Administration)",
+    },
+    "deputy_national_security_advisor": {
+        "naid": "7385966",
+        "identifier": "WJC-NSCDNS",
+        "title": "Records of the National Security Council Deputy National Security Advisor (Clinton Administration)",
+    },
+    "european_affairs": {
+        "naid": "7386505",
+        "identifier": "WJC-NSCEA",
+        "title": "Records of the National Security Council European Affairs Office (Clinton Administration)",
+    },
+    "executive_secretary": {
+        "naid": "7386739",
+        "identifier": "WJC-NSCES",
+        "title": "Records of the National Security Council Executive Secretary (Clinton Administration)",
+    },
+    "global_environmental_affairs": {
+        "naid": "7386837",
+        "identifier": "WJC-NSCGE",
+        "title": "Records of the National Security Council Global Environmental Affairs Office (Clinton Administration)",
+    },
+    "global_issues": {
+        "naid": "7387422",
+        "identifier": "WJC-NSCGI",
+        "title": "Records of the National Security Council Global Issues and Multilateral Affairs Office (Clinton Administration)",
+    },
+    "gulf_war_illness": {
+        "naid": "7387424",
+        "identifier": "WJC-NSCGWI",
+        "title": "Records of the National Security Council Gulf War Illness Office (Clinton Administration)",
+    },
+    "intelligence_programs": {
+        "naid": "7388751",
+        "identifier": "WJC-NSCIP",
+        "title": "Records of the National Security Council Intelligence Programs Office (Clinton Administration)",
+    },
+    "interagency_security_classification_appeals_panel": {
+        "naid": "7388753",
+        "identifier": "WJC-NSCIS",
+        "title": "Records of the National Security Council Interagency Security Classification Appeals Panel (ISCAP) (Clinton Administration)",
+    },
+    "interamerican_affairs": {
+        "naid": "7387463",
+        "identifier": "WJC-NSCIA",
+        "title": "Records of the National Security Council Interamerican Affairs Office (Clinton Administration)",
+    },
+    "international_economic_affairs": {
+        "naid": "7387655",
+        "identifier": "WJC-NSCIE",
+        "title": "Records of the National Security Council International Economic Affairs Office (Clinton Administration)",
+    },
+    "international_health_affairs": {
+        "naid": "7388748",
+        "identifier": "WJC-NSCIH",
+        "title": "Records of the National Security Council International Health Affairs Office (Clinton Administration)",
+    },
+    "legal_affairs": {
+        "naid": "7388760",
+        "identifier": "WJC-NSCLA",
+        "title": "Records of the National Security Council Legal Affairs Office (Clinton Administration)",
+    },
+    "legislative_affairs": {
+        "naid": "7388763",
+        "identifier": "WJC-NSCLGA",
+        "title": "Records of the National Security Council Legislative Affairs Office (Clinton Administration)",
+    },
+    "multilateral_humanitarian_affairs": {
+        "naid": "7388766",
+        "identifier": "WJC-NSCMHA",
+        "title": "Records of the National Security Council Multilateral and Humanitarian Affairs Office (Clinton Administration)",
+    },
+    "nato_summit": {
+        "naid": "7388775",
+        "identifier": "WJC-NSCNS",
+        "title": "Records of the National Security Council NATO Summit Office (Clinton Administration)",
+    },
+    "national_security_advisor": {
+        "naid": "7388800",
+        "identifier": "WJC-NSCNSA",
+        "title": "Records of the National Security Council National Security Advisor (Clinton Administration)",
+    },
+    "near_east_south_asian_affairs": {
+        "naid": "7388768",
+        "identifier": "WJC-NSCNE",
+        "title": "Records of the National Security Council Near East and South Asian Affairs Office (Clinton Administration)",
+    },
+    "nonproliferation_export_controls": {
+        "naid": "7388773",
+        "identifier": "WJC-NSCNP",
+        "title": "Records of the National Security Council Nonproliferation and Export Controls Office (Clinton Administration)",
+    },
+    "press_communications": {
+        "naid": "7388805",
+        "identifier": "WJC-NSCPC",
+        "title": "Records of the National Security Council Office of Press and Communications (Clinton Administration)",
+    },
+    "public_affairs": {
+        "naid": "7388802",
+        "identifier": "WJC-NSCPC",
+        "title": "Records of the National Security Council Public Affairs Office (Clinton Administration)",
+    },
+    "records_management": {
+        "naid": "7388808",
+        "identifier": "WJC-NSCRM",
+        "title": "Records of the National Security Council Records Management Office (Clinton Administration)",
+    },
+    "russia_ukraine_eurasian_affairs": {
+        "naid": "7388835",
+        "identifier": "WJC-NSCRUE",
+        "title": "Records of the National Security Council Russia, Ukraine, and Eurasian Affairs Office (Clinton Administration)",
+    },
+    "southeast_european_affairs": {
+        "naid": "7388837",
+        "identifier": "WJC-NSCSEE",
+        "title": "Records of the National Security Council Southeast Europe Affairs Office (Clinton Administration)",
+    },
+    "speechwriting": {
+        "naid": "7388842",
+        "identifier": "WJC-NSCSW",
+        "title": "Records of the National Security Council Speechwriting Office (Clinton Administration)",
+    },
+    "staff_director": {
+        "naid": "7388836",
+        "identifier": "WJC-NSCSD",
+        "title": "Records of the National Security Council Staff Director (Clinton Administration)",
+    },
+    "strategic_planning": {
+        "naid": "7388838",
+        "identifier": "WJC-NSCSP",
+        "title": "Records of the National Security Council Strategic Planning Office (Clinton Administration)",
+    },
+    "systems_technical_planning": {
+        "naid": "7388841",
+        "identifier": "WJC-NSCT",
+        "title": "Records of the National Security Council Systems and Technical Planning Office (Clinton Administration)",
+    },
+    "transition": {
+        "naid": "7388844",
+        "identifier": "WJC-NSCTO",
+        "title": "Records of the National Security Council Transition Office (Clinton Administration)",
+    },
+    "transnational_threats": {
+        "naid": "7388843",
+        "identifier": "WJC-NSCTNT",
+        "title": "Records of the National Security Council Transnational Threats Office (Clinton Administration)",
+    },
+    "white_house_situation_room": {
+        "naid": "7388840",
+        "identifier": "WJC-NSCSR",
+        "title": "Records of the National Security Council White House Situation Room (Clinton Administration)",
+    },
+}
+
+NARA_OFFICE_ALIASES = [
+    ("interagency_security_classification_appeals_panel", ["iscap", "scap"]),
+    ("press_communications", ["officeofpressandcommunications", "publicaffairscommunications", "publicstatementspress", "nscpress", "pressgobush", "ressgobush", "sswozniak", "sscrowley", "press", "communications"]),
+    ("national_security_advisor", ["officeofthenationalsecurityadvisor", "officeofthenationasecurityadvisor", "nationalsecurityadvisor", "bergersamuel"]),
+    ("near_east_south_asian_affairs", ["neareastandsouthasianaffairs", "eastsouthasianaffairs"]),
+    ("russia_ukraine_eurasian_affairs", ["russiaukraineeurasianaffairs", "ussiaukraineeurasianaffairs", "ukraineeurasianaffairs"]),
+    ("nonproliferation_export_controls", ["nonproliferationandexportcontrols", "proliferationandexportcontrols", "exportcontrols", "exportcontrois", "exportcontrots"]),
+    ("multilateral_humanitarian_affairs", ["multilateralhumanitarianaffairs", "humanitarianaffairs", "humganitarianaffairs", "hurnanitarianaffairs"]),
+    ("international_economic_affairs", ["internationaleconomicaffairs", "nationaleconomicaffairs", "economicaffairs", "micaffairs", "whymanwilliam", "fromanmichael", "walshhelen"]),
+    ("international_health_affairs", ["internationalhealthaffairs", "healthaffairs"]),
+    ("global_environmental_affairs", ["globalenvironmentalaffairs", "environmentalaffairs", "clausseneileen", "doniger", "sandalow"]),
+    ("global_issues", ["globalissuesandmultilateralaffairs", "globalaffairs", "globaiaffairs", "obalaffairs", "darraghsean", "orrrobert"]),
+    ("central_eastern_europe", ["centralandeasterneuropeanaffairs", "centralandeasterneurope", "centraandeasterneurope", "easterneuropeanaffairs"]),
+    ("southeast_european_affairs", ["southeasteuropeanaffairs", "southeasterneuropeanaffairs"]),
+    ("administration_security", ["nscadminsecurity", "administrationsecurity"]),
+    ("access_management", ["accessmanagement", "ccessmanagement", "essmanagement"]),
+    ("records_management", ["recordsmanagement", "ecordsmanagement", "dsmanagement"]),
+    ("defense_policy", ["defensepolicy", "efensepolicy", "fensepolicy", "nsepolicy", "ensepolicy", "sepolicy", "defensepoiicy", "efensepoiicy", "defensepoticy", "policybell", "policyandreasen", "policybinnendijk", "policypeterman", "policywitkowsky", "policybeardsworth"]),
+    ("democracy_human_rights", ["democracyhumanrights", "democracyhumanrighits", "emocracyhumanrights", "humanrights", "lorinmatthew"]),
+    ("intelligence_programs", ["intelligenceprograms", "intelligencepragrams", "ntelligenceprograms", "elligenceprograms", "igenceprograms", "mitchelldon", "cavanaughjames", "beersrand"]),
+    ("legislative_affairs", ["legislativeaffairs", "egislativeaffairs", "slativeaffairs", "anverswilliam", "danverswilliam", "rosnerjeremy", "shapirodaniel"]),
+    ("transnational_threats", ["transnationalthreats", "ransnationalthreats", "nationalthreats", "rosafrederick"]),
+    ("speechwriting", ["speechwriting", "peechwriting", "chwriting"]),
+    ("staff_director", ["staffdirector", "staffdirecter"]),
+    ("strategic_planning", ["strategicplanning", "rategicplanning"]),
+    ("systems_technical_planning", ["systemstechnicalplanning", "systemsandtechnicalplanning", "systemstechnicalpianning", "systemsandtechnicalpianning"]),
+    ("european_affairs", ["europeanaffairs", "uropeanaffairs", "ropeanaffairs", "opeanaffairs", "peanaffairs", "blinken", "norlandrichard"]),
+    ("african_affairs", ["africanaffairs", "fricanaffairs", "ricanaffairs", "smithgayle", "byrnecathy", "dempseynora", "barks", "deshazer", "jendayi", "frazer"]),
+    ("asian_affairs", ["asianaffairs", "sianaffairs"]),
+    ("interamerican_affairs", ["interamericanaffairs", "americanaffairs", "feinberg", "blakeman", "feeleyjohn"]),
+    ("legal_affairs", ["legalaffairs", "legaladvisor", "legaladviser", "legaadvisor", "legaiadvisor", "legatadvisor", "galadvisor", "egaladvisor", "aladvisor", "derosamary", "bakerjames"]),
+    ("counselors_office", ["counselorsoffice", "nselorsoffice", "ounselorsoffice", "counselorstopresident", "counselortothepresident", "counselortothepresidenit", "schifterrichard", "gergendavid"]),
+    ("executive_secretary", ["executivesecretary", "ivesecretary"]),
+    ("nato_summit", ["natosummit"]),
+    ("gulf_war_illness", ["gulfwarillness", "gulfwariliness", "gulfwarlliness"]),
+    ("bosnia", ["bosnia"]),
+    ("transition", ["campaigntransition", "transition", "campaigrtransition"]),
+    ("administrative", ["nscadmin", "administration", "administrative", "personnel"]),
+    ("white_house_situation_room", ["whitehousesituationroom", "situationroom"]),
+]
 
 OUTPUT_BASE = "clinton-2013-0185-m-source-note-entries"
 JSON_PATH = REPORTS / f"{OUTPUT_BASE}.json"
@@ -167,6 +417,55 @@ def clean_spaces(value: str) -> str:
     value = re.sub(r"\s+", " ", value)
     value = re.sub(r"\s+([,.;:])", r"\1", value)
     return value.strip()
+
+
+def nara_match_text(value: str) -> str:
+    value = ascii_clean(value).lower()
+    value = value.replace("&", "and")
+    value = re.sub(r"[^a-z0-9]+", "", value)
+    return value
+
+
+def nara_collection_for_office(office_or_series: str) -> tuple[dict, str, str]:
+    normalized = nara_match_text(office_or_series)
+    if not normalized or "officeorseriesnotlegible" in normalized:
+        return (
+            NARA_PARENT_COLLECTION,
+            "parent_collection",
+            "Parent Clinton NSC collection NAID; office/series not legible in the finding-aid row.",
+        )
+
+    for key, aliases in NARA_OFFICE_ALIASES:
+        if any(alias in normalized for alias in aliases):
+            return (
+                NARA_COLLECTIONS[key],
+                "office_collection",
+                "Catalog collection NAID matched from the finding-aid office/series text; no file-unit NAID asserted.",
+            )
+
+    return (
+        NARA_PARENT_COLLECTION,
+        "parent_collection",
+        "Parent Clinton NSC collection NAID; no reliable specific office collection match was asserted.",
+    )
+
+
+def nara_metadata_for_entry(entry: dict) -> dict:
+    collection, match_level, match_note = nara_collection_for_office(entry["office_or_series"])
+    return {
+        "nara_primary_naid": collection["naid"],
+        "nara_primary_level": "collection",
+        "nara_collection_naid": collection["naid"],
+        "nara_collection_identifier": collection["identifier"],
+        "nara_collection_title": collection["title"],
+        "nara_series_naid": "",
+        "nara_series_title": "",
+        "nara_file_unit_naid": "",
+        "nara_file_unit_title": "",
+        "nara_catalog_url": f"{NARA_CATALOG_URL_BASE}{collection['naid']}",
+        "nara_match_level": match_level,
+        "nara_match_note": match_note,
+    }
 
 
 def is_placeholder_text(value: str) -> bool:
@@ -420,6 +719,7 @@ def refresh_entry(entry: dict) -> None:
         entry["raw_office_or_series"],
         entry["office_or_series"],
     )
+    entry.update(nara_metadata_for_entry(entry))
 
 
 def make_entry(
@@ -470,6 +770,7 @@ def make_entry(
     entry["source_note"] = build_source_note(entry)
     entry["compiler_note"] = compiler_note(entry)
     entry["review_flags"] = review_flags(raw_title, title, raw_note, note)
+    entry.update(nara_metadata_for_entry(entry))
     return entry
 
 
@@ -605,6 +906,7 @@ def parse_page(part: int, pdf_page: int, page_text: str) -> list[dict]:
                 previous_entry["raw_office_or_series"],
                 previous_entry["office_or_series"],
             )
+            previous_entry.update(nara_metadata_for_entry(previous_entry))
         elif NOTEISH_RE.search(stripped) and previous_entry is not None and start > note_col - 18:
             raw_note = clean_spaces(f"{previous_entry['raw_office_or_series']} {stripped}")
             clean_raw_note, note_markers = split_restrictions(raw_note)
@@ -615,6 +917,7 @@ def parse_page(part: int, pdf_page: int, page_text: str) -> list[dict]:
                     previous_entry["restriction_markers"].append(marker)
             previous_entry["source_note"] = build_source_note(previous_entry)
             previous_entry["compiler_note"] = compiler_note(previous_entry)
+            previous_entry.update(nara_metadata_for_entry(previous_entry))
         else:
             pending_folder_lines.append(stripped)
             for marker in markers:
@@ -646,6 +949,18 @@ def write_csv(entries: list[dict]) -> None:
         "office_or_series",
         "folder_title",
         "source_note",
+        "nara_primary_naid",
+        "nara_primary_level",
+        "nara_collection_naid",
+        "nara_collection_identifier",
+        "nara_collection_title",
+        "nara_series_naid",
+        "nara_series_title",
+        "nara_file_unit_naid",
+        "nara_file_unit_title",
+        "nara_catalog_url",
+        "nara_match_level",
+        "nara_match_note",
         "finding_aid_locator",
         "restriction_markers",
         "compiler_note",
@@ -685,9 +1000,10 @@ def write_markdown(entries: list[dict], summary: dict) -> None:
     lines.append(
         "Compiler caution: these are folder-level source-path entries. The CSV/JSON keep "
         "the 2013-0185-M Part/PDF-page locator, restriction markers, and verification note "
-        "outside the copy-paste Source note so compilers can append item-level title/date, "
-        "classification/handling, attachments, annotations, excisions, and declassification "
-        "facts only after checking the original folder or document image."
+        "outside the copy-paste Source note. NARA Catalog IDs are also kept as locator "
+        "metadata, not inserted into the Source note. Compilers can append item-level "
+        "title/date, classification/handling, attachments, annotations, excisions, and "
+        "declassification facts only after checking the original folder or document image."
     )
     lines.append("")
     lines.append("## Summary")
@@ -696,6 +1012,9 @@ def write_markdown(entries: list[dict], summary: dict) -> None:
     lines.append(f"- Finding-aid pages processed: {summary['pages_processed']}")
     lines.append(f"- Entries with printed restriction markers: {summary['entries_with_restriction_markers']}")
     lines.append(f"- Entries with review flags: {summary['entries_with_review_flags']}")
+    lines.append(f"- Entries with NARA Catalog collection NAIDs: {summary['entries_with_nara_collection_naid']}")
+    lines.append(f"- Entries with specific NSC office collection NAIDs: {summary['entries_with_nara_office_collection_naid']}")
+    lines.append(f"- Entries using parent NSC collection NAID fallback: {summary['entries_with_nara_parent_collection_naid']}")
     lines.append("")
     lines.append("## Counts By Part")
     lines.append("")
@@ -722,6 +1041,12 @@ def write_markdown(entries: list[dict], summary: dict) -> None:
 def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
     counts_by_part = Counter(str(entry["part"]) for entry in entries)
     counts_by_office = Counter(entry["office_or_series"] for entry in entries)
+    nara_match_levels = Counter(entry["nara_match_level"] for entry in entries)
+    nara_collections = Counter(
+        f"{entry['nara_collection_naid']} {entry['nara_collection_identifier']}"
+        for entry in entries
+        if entry.get("nara_collection_naid")
+    )
     flags = Counter(flag for entry in entries for flag in entry["review_flags"])
     validation = validate_source_notes(entries)
     return {
@@ -736,6 +1061,12 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
         "top_office_or_series": counts_by_office.most_common(50),
         "entries_with_restriction_markers": sum(1 for entry in entries if entry["restriction_markers"]),
         "entries_with_review_flags": sum(1 for entry in entries if entry["review_flags"]),
+        "entries_with_nara_collection_naid": sum(1 for entry in entries if entry.get("nara_collection_naid")),
+        "entries_with_nara_office_collection_naid": nara_match_levels.get("office_collection", 0),
+        "entries_with_nara_parent_collection_naid": nara_match_levels.get("parent_collection", 0),
+        "entries_with_nara_file_unit_naid": sum(1 for entry in entries if entry.get("nara_file_unit_naid")),
+        "nara_match_level_counts": dict(nara_match_levels),
+        "top_nara_collections": nara_collections.most_common(50),
         "office_or_series_count": len(counts_by_office),
         "review_flag_counts": dict(flags),
         "validation": validation,
@@ -743,7 +1074,8 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
             "repository_first": True,
             "repository_form": REPOSITORY,
             "formal_repository_name": FORMAL_REPOSITORY,
-            "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, and finding-aid restriction markers are kept in metadata fields, not in the copy-paste source_note line.",
+            "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, finding-aid restriction markers, and NARA Catalog IDs are kept in metadata fields, not in the copy-paste source_note line.",
+            "nara_identifier_policy": "Each entry receives a NARA Catalog collection NAID. Rows with reliable office/series matches receive the corresponding Clinton NSC office collection NAID; unresolved rows receive the parent Clinton NSC collection NAID. File-unit NAIDs are not asserted without a reliable Catalog-to-OA/ID crosswalk.",
             "source_note_order": [
                 "repository",
                 "record collection",
@@ -773,6 +1105,16 @@ def write_browser_payload(entries: list[dict], summary: dict) -> None:
             "oa": entry["oa_id"],
             "office": entry["office_or_series"],
             "folder": entry["folder_title"],
+            "nara": entry["nara_primary_naid"],
+            "nlevel": entry["nara_primary_level"],
+            "ncol": entry["nara_collection_naid"],
+            "nci": entry["nara_collection_identifier"],
+            "nct": entry["nara_collection_title"],
+            "nfu": entry["nara_file_unit_naid"],
+            "nft": entry["nara_file_unit_title"],
+            "nurl": entry["nara_catalog_url"],
+            "nmatch": entry["nara_match_level"],
+            "nmsg": entry["nara_match_note"],
             "rest": entry["restriction_markers"],
             "flags": entry["review_flags"],
             "loc": entry["finding_aid_locator"],
@@ -809,6 +1151,9 @@ def main() -> None:
         "counts_by_part": summary["counts_by_part"],
         "entries_with_restriction_markers": summary["entries_with_restriction_markers"],
         "entries_with_review_flags": summary["entries_with_review_flags"],
+        "entries_with_nara_collection_naid": summary["entries_with_nara_collection_naid"],
+        "entries_with_nara_office_collection_naid": summary["entries_with_nara_office_collection_naid"],
+        "entries_with_nara_parent_collection_naid": summary["entries_with_nara_parent_collection_naid"],
         "outputs": {
             "markdown": str(MD_PATH),
             "text": str(TXT_PATH),
