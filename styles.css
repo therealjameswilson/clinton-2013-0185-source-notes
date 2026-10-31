@@ -330,3 +330,15 @@ tr:last-child td {
     height: 260px;
   }
 }
+
+/* Citation provenance stays outside the copied Source line. */
+.citation-guidance { margin: 1rem 0; padding: 0.8rem 1rem; border: 1px solid currentColor; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; }
+.citation-guidance p { margin: 0.5rem 0; }
+.source-details summary { cursor: pointer; font-weight: 700; }
+.source-details code { overflow-wrap: anywhere; }
+.copy-fallback { margin-top: 1rem; }
+.copy-fallback label { display: block; font-weight: 700; margin-bottom: 0.4rem; }
+.copy-fallback textarea { box-sizing: border-box; width: 100%; min-height: 7rem; font: inherit; padding: 0.7rem; }
+.source-note { user-select: text; -webkit-user-select: text; }
+#deepLinkStatus:empty { display: none; }
+.row-meta a { text-underline-offset: 2px; }

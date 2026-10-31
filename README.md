@@ -51,3 +51,11 @@ To rebuild the downloadable exports, place the four 2013-0185-M PDFs in `source-
 ```bash
 python3 tools/build-clinton-2013-0185-source-notes.py
 ```
+
+## Citation readiness and direct links
+
+The browser preserves every canonical data row and copies only its plain `Source:` text. Folder and series stems are not final item source notes; catalog-item locators also require document-level verification. Review flags and archival access markers are displayed separately, without inferring original classification or release status. `data/source-snapshot.json` records the exact input commit, data blob, SHA-256, generation date, and row counts.
+
+Use `?q=` with URL-encoded search terms. Use `?id=` for an exact row; Reset returns to all rows. Clinton IDs are the original `id` field, for example `?id=2013-0185-M-P1-p0002-001`; duplicate note strings retain separate row IDs.
+
+If clipboard access and the browser copy command fail, the selected source text remains visible in a labeled textarea for keyboard or mobile manual copying; the status does not falsely report success.

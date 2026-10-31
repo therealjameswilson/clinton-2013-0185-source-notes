@@ -9,7 +9,7 @@
     />
     <title>Clinton 2013-0185-M Source Notes</title>
     <link rel="icon" href="assets/clinton-source-notes.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=citations-20261031" />
   </head>
   <body>
     <header class="topbar">
@@ -47,6 +47,15 @@
           <p class="style-note">
             Source notes follow FRUS order: Clinton Library, Clinton Presidential Records, National Security Council, office or series, OA/ID, folder title. Finding-aid page locators, NARA Catalog IDs, and restriction markers stay outside the copied note.
           </p>
+          <aside class="citation-guidance" aria-label="Citation readiness and provenance">
+            <p><strong>Folder citation stems, not final document source notes.</strong> All 42,413 finding-aid rows remain distinct, including 286 repeated note strings. There are 6,258 review-flagged rows and 220 illegible office/series entries. Catalog NAIDs identify collections or offices; no file-unit NAID is asserted. Match office/series, OA/ID, and folder together, then verify the document and its provenance.</p>
+            <p>Only the plain <code>Source:</code> line is copied. Review flags, finding-aid locations, and catalog links are shown separately. Availability or restriction markers do not establish original classification or current declassification status. Preserve the provenance of the copy actually used; a presidential-library lead does not replace a State Department FOIA citation.</p>
+            <details class="source-details">
+              <summary>Source snapshot: 42,413 rows; 42,127 distinct source-note strings</summary>
+              <p>Generated 2026-07-07T19:54:35+00:00. <a href="https://github.com/therealjameswilson/clinton-2013-0185-source-notes/tree/512bc2e1857d81230e9a92e05707d54f9908a40a">Canonical source version 512bc2e1857d</a> · <a href="https://raw.githubusercontent.com/therealjameswilson/clinton-2013-0185-source-notes/512bc2e1857d81230e9a92e05707d54f9908a40a/data/entries.min.json">Exact source JSON</a> · <a href="data/source-snapshot.json">Snapshot manifest</a></p>
+              <p>Git data blob: <code>2582e39454a1182dfaa2b482ba527228cc6af8d4</code><br />SHA-256: <code>eaa4ae0db6607aa94af9c6180e03c95c5dc6e69370cbc64a48ab66ee1c118ead</code></p>
+            </details>
+          </aside>
           <div class="control-grid">
             <label class="field span-2">
               <span>Search</span>
@@ -82,8 +91,13 @@
           <div class="action-row">
             <button id="copyVisible" type="button">Copy Visible Source Notes</button>
             <button id="resetFilters" type="button">Reset</button>
-            <span id="copyStatus" role="status" aria-live="polite"></span>
+            <span id="copyStatus" role="status" aria-live="polite" aria-atomic="true"></span>
           </div>
+          <div id="copyFallback" class="copy-fallback" hidden>
+            <label for="copyFallbackText">Selectable source text</label>
+            <textarea id="copyFallbackText" rows="5" readonly aria-describedby="copyStatus"></textarea>
+          </div>
+          <p id="deepLinkStatus" role="status" aria-live="polite"></p>
         </div>
 
         <figure class="source-preview">
@@ -132,6 +146,6 @@
       </tr>
     </template>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=citations-20261031"></script>
   </body>
 </html>

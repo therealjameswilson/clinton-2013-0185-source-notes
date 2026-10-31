@@ -1,0 +1,22 @@
+{
+  "repo": "clinton-2013-0185-source-notes",
+  "canonicalCommit": "512bc2e1857d81230e9a92e05707d54f9908a40a",
+  "canonicalGitBlob": "2582e39454a1182dfaa2b482ba527228cc6af8d4",
+  "canonicalBytes": 33511494,
+  "canonicalSha256": "eaa4ae0db6607aa94af9c6180e03c95c5dc6e69370cbc64a48ab66ee1c118ead",
+  "canonicalGeneratedAt": "2026-07-07T19:54:35+00:00",
+  "canonicalRows": 42413,
+  "canonicalUniqueNotes": 42127,
+  "canonicalDataURL": "https://raw.githubusercontent.com/therealjameswilson/clinton-2013-0185-source-notes/512bc2e1857d81230e9a92e05707d54f9908a40a/data/entries.min.json",
+  "strongLocatorCaution": "All rows are folder citation stems. Catalog IDs are collection/office-level; OA/ID alone is not an exact record match.",
+  "rowIdScheme": "id (original finding-aid row identifier)",
+  "citationReadiness": "Citation stems and catalog locators; document details and provenance require verification before a final FRUS item source note.",
+  "reviewFlagRows": 6258,
+  "illegibleOfficeRows": 220,
+  "fileUnitNaidRows": 0,
+  "naraMatchLevels": {
+    "office_collection": 41977,
+    "parent_collection": 436
+  },
+  "restrictionRows": 274
+}

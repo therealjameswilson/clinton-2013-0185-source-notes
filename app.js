@@ -1,4 +1,6 @@
-const DATA_URL = "data/entries.min.json";
+const DATA_URL = "data/entries.min.json?v=2582e39454a1182dfaa2b482ba527228cc6af8d4";
+const EXPECTED_ROWS = 42413;
+const URL_PARAMS = new URLSearchParams(window.location.search);
 const SOURCE_PREFIX =
   "Source: Clinton Library, Clinton Presidential Records, National Security Council";
 const INITIAL_RESULTS = 1000;
@@ -8,7 +10,8 @@ const SCROLL_LOAD_MARGIN = 1400;
 const state = {
   entries: [],
   matches: [],
-  query: "",
+  id: URL_PARAMS.get("id") || "",
+  query: URL_PARAMS.get("q") || "",
   queryTerms: [],
   part: "all",
   office: "all",
@@ -99,8 +102,11 @@ function matchesOffice(entry) {
 }
 
 function applyFilters() {
+  document.querySelector("#deepLinkStatus").textContent = state.id
+    ? "Showing an exact source row. Use Reset to browse the complete collection."
+    : "";
   state.matches = state.entries.filter(
-    (entry) => matchesPart(entry) && matchesOffice(entry) && matchesQuality(entry) && matchesQuery(entry),
+    (entry) => (!state.id || entry.id === state.id) && matchesPart(entry) && matchesOffice(entry) && matchesQuality(entry) && matchesQuery(entry),
   );
   state.visible = [];
   state.renderedCount = 0;
@@ -155,7 +161,11 @@ function appendResults(count) {
     row.querySelector(".page-cell").textContent = entry.pg;
 
     const meta = row.querySelector(".row-meta");
-    meta.textContent = `${entry.loc}.`;
+    meta.textContent = `Folder citation stem; document details need verification. ${entry.loc}. `;
+    const rowLink = document.createElement("a");
+    rowLink.href = `?id=${encodeURIComponent(entry.id)}`;
+    rowLink.textContent = "Finding-aid row link";
+    meta.appendChild(rowLink);
     const nara = naraDetail(entry);
     if (nara) {
       meta.append(` ${nara}.`);
@@ -172,6 +182,7 @@ function appendResults(count) {
       meta.append(` Restrictions: ${entry.rest.join("; ")}.`);
     }
 
+    row.querySelector(".copy-row").setAttribute("aria-label", `Copy source note for ${entry.folder}`);
     row.querySelector(".copy-row").addEventListener("click", () => {
       copyText(note, "Copied one source note.");
     });
@@ -203,17 +214,35 @@ function queueScrollCheck() {
 }
 
 async function copyText(text, successMessage) {
+  if (!text) return;
+  const fallback = document.querySelector("#copyFallback");
+  const area = document.querySelector("#copyFallbackText");
+  fallback.hidden = true;
   try {
     await navigator.clipboard.writeText(text);
     els.copyStatus.textContent = successMessage;
+    return;
   } catch {
-    const area = document.createElement("textarea");
+    // Keep a selectable copy visible when browser or mobile clipboard access is blocked.
+    const previousFocus = document.activeElement;
     area.value = text;
-    document.body.appendChild(area);
+    fallback.hidden = false;
+    area.focus();
     area.select();
-    document.execCommand("copy");
-    area.remove();
-    els.copyStatus.textContent = successMessage;
+    area.setSelectionRange(0, text.length);
+    let copied = false;
+    try {
+      copied = document.execCommand("copy") === true;
+    } catch {
+      copied = false;
+    }
+    if (copied) {
+      fallback.hidden = true;
+      previousFocus?.focus();
+      els.copyStatus.textContent = successMessage;
+    } else {
+      els.copyStatus.textContent = "Automatic copying is unavailable. The source text is selected below; press Ctrl+C or Command+C, or long-press to copy.";
+    }
   }
 }
 
@@ -230,6 +259,12 @@ async function loadData() {
   if (!response.ok) throw new Error(`Could not load ${DATA_URL}`);
   const payload = await response.json();
   const summary = payload.summary || {};
+  if (payload.entries?.length !== EXPECTED_ROWS) {
+    throw new Error("The loaded dataset does not match this source snapshot. Reload the page or use the canonical snapshot link above.");
+  }
+  state.query = state.query.trim().toLowerCase();
+  state.queryTerms = state.query.split(/\s+/).filter(Boolean);
+  els.search.value = URL_PARAMS.get("q") || "";
   state.entries = (payload.entries || []).map((entry) => ({
     ...entry,
     haystack:
@@ -250,6 +285,7 @@ async function loadData() {
 els.search.addEventListener(
   "input",
   debounce((event) => {
+    state.id = "";
     state.query = event.target.value.trim().toLowerCase();
     state.queryTerms = state.query.split(/\s+/).filter(Boolean);
     applyFilters();
@@ -272,6 +308,7 @@ els.quality.addEventListener("change", (event) => {
 });
 
 els.reset.addEventListener("click", () => {
+  state.id = "";
   state.query = "";
   state.queryTerms = [];
   state.part = "all";
