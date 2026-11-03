@@ -13,14 +13,14 @@ Static browser and download package for FRUS-style Clinton Library source-note m
 ## Source-Note Form
 
 ```text
-Source: Clinton Library, Clinton Presidential Records, National Security Council, [office or series], OA/ID [number], [folder title].
+Source: Clinton Library, Clinton Presidential Records, National Security Council, [office or series], OA/Box Number [number], [folder title].
 ```
 
 These are folder-level source-path leads in FRUS Source Note order. The 2013-0185-M Part/PDF-page locator, NARA Catalog IDs, printed restriction markers, and verification cautions stay in metadata fields rather than in the copyable Source note. Before final publication, compilers should append only verified item-level document title/date, exact folder contents, classification/handling, attachments, annotations, excisions, and declassification markings from the original folder or document image.
 
 ## NARA Catalog ID Policy
 
-Every entry has a `nara_collection_naid` and `nara_catalog_url`. Rows with a reliable office/series match use the specific Clinton NSC office collection NAID; unresolved or illegible rows use the parent Clinton NSC collection NAID. The data does not assert file-unit NAIDs unless there is a reliable Catalog-to-OA/ID crosswalk.
+Every entry has a `nara_collection_naid` and `nara_catalog_url`. Rows with a reliable office/series match use the specific Clinton NSC office collection NAID; unresolved or illegible rows use the parent Clinton NSC collection NAID. The data does not assert file-unit NAIDs unless there is a reliable Catalog-to-OA/Box Number crosswalk.
 
 ## Generated Counts
 

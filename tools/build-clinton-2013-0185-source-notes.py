@@ -639,7 +639,7 @@ def build_source_note(entry: dict) -> str:
         COLLECTION,
         SERIES,
         entry["office_or_series"],
-        f"OA/ID {entry['oa_id']}",
+        f"OA/Box Number {entry['oa_id']}",
         title_for_source_note(entry["folder_title"]),
     ]
     source = f"Source: {', '.join(part for part in parts if part)}"
@@ -655,7 +655,7 @@ def validate_source_notes(entries: list[dict]) -> dict:
         re.compile(r"3-5\(c\)", re.I),
         re.compile(r"\bb\([1-9]\)", re.I),
     ]
-    structural_bad_punct = re.compile(r"Security Council,\s*,|,\s*,\s*OA/ID|OA/ID\s+\d+[A-Z]?,\s*[.:;]+\.?$")
+    structural_bad_punct = re.compile(r"Security Council,\s*,|,\s*,\s*OA/Box Number|OA/Box Number\s+\d+[A-Z]?,\s*[.:;]+\.?$")
     return {
         "bad_prefix_count": sum(
             not note.startswith("Source: Clinton Library, Clinton Presidential Records, National Security Council, ")
@@ -994,7 +994,7 @@ def write_markdown(entries: list[dict], summary: dict) -> None:
     lines.append("")
     lines.append(
         "Source: Clinton Library, Clinton Presidential Records, National Security Council, "
-        "[office or series], OA/ID [number], [folder title]."
+        "[office or series], OA/Box Number [number], [folder title]."
     )
     lines.append("")
     lines.append(
@@ -1075,13 +1075,13 @@ def build_summary(entries: list[dict], page_counts: dict[int, int]) -> dict:
             "repository_form": REPOSITORY,
             "formal_repository_name": FORMAL_REPOSITORY,
             "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, finding-aid restriction markers, and NARA Catalog IDs are kept in metadata fields, not in the copy-paste source_note line.",
-            "nara_identifier_policy": "Each entry receives a NARA Catalog collection NAID. Rows with reliable office/series matches receive the corresponding Clinton NSC office collection NAID; unresolved rows receive the parent Clinton NSC collection NAID. File-unit NAIDs are not asserted without a reliable Catalog-to-OA/ID crosswalk.",
+            "nara_identifier_policy": "Each entry receives a NARA Catalog collection NAID. Rows with reliable office/series matches receive the corresponding Clinton NSC office collection NAID; unresolved rows receive the parent Clinton NSC collection NAID. File-unit NAIDs are not asserted without a reliable Catalog-to-OA/Box Number crosswalk.",
             "source_note_order": [
                 "repository",
                 "record collection",
                 "record group or series",
                 "office or series",
-                "OA/ID",
+                "OA/Box Number",
                 "folder title",
             ],
         },

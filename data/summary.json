@@ -423,13 +423,13 @@
     "repository_form": "Clinton Library",
     "formal_repository_name": "William J. Clinton Presidential Library",
     "locator_policy": "The 2013-0185-M request ID, Part/PDF-page evidence, finding-aid restriction markers, and NARA Catalog IDs are kept in metadata fields, not in the copy-paste source_note line.",
-    "nara_identifier_policy": "Each entry receives a NARA Catalog collection NAID. Rows with reliable office/series matches receive the corresponding Clinton NSC office collection NAID; unresolved rows receive the parent Clinton NSC collection NAID. File-unit NAIDs are not asserted without a reliable Catalog-to-OA/ID crosswalk.",
+    "nara_identifier_policy": "Each entry receives a NARA Catalog collection NAID. Rows with reliable office/series matches receive the corresponding Clinton NSC office collection NAID; unresolved rows receive the parent Clinton NSC collection NAID. File-unit NAIDs are not asserted without a reliable Catalog-to-OA/Box Number crosswalk.",
     "source_note_order": [
       "repository",
       "record collection",
       "record group or series",
       "office or series",
-      "OA/ID",
+      "OA/Box Number",
       "folder title"
     ]
   }

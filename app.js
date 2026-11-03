@@ -1,4 +1,4 @@
-const DATA_URL = "data/entries.min.json?v=2582e39454a1182dfaa2b482ba527228cc6af8d4";
+const DATA_URL = "data/entries.min.json?v=11ceaac807608b6cbd5db1fa66037ffffa010047";
 const EXPECTED_ROWS = 42413;
 const URL_PARAMS = new URLSearchParams(window.location.search);
 const SOURCE_PREFIX =
@@ -48,7 +48,7 @@ function folderForSource(folder) {
 
 function sourceNote(entry) {
   if (entry.note) return entry.note;
-  const source = `${SOURCE_PREFIX}, ${entry.office}, OA/ID ${entry.oa}, ${folderForSource(entry.folder)}`;
+  const source = `${SOURCE_PREFIX}, ${entry.office}, OA/Box Number ${entry.oa}, ${folderForSource(entry.folder)}`;
   return /[.?!]$/.test(source) ? source : `${source}.`;
 }
 

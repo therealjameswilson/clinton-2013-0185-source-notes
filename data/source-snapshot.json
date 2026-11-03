@@ -8,7 +8,7 @@
   "canonicalRows": 42413,
   "canonicalUniqueNotes": 42127,
   "canonicalDataURL": "https://raw.githubusercontent.com/therealjameswilson/clinton-2013-0185-source-notes/512bc2e1857d81230e9a92e05707d54f9908a40a/data/entries.min.json",
-  "strongLocatorCaution": "All rows are folder citation stems. Catalog IDs are collection/office-level; OA/ID alone is not an exact record match.",
+  "strongLocatorCaution": "All rows are folder citation stems. Catalog IDs are collection/office-level; OA/Box Number alone is not an exact record match.",
   "rowIdScheme": "id (original finding-aid row identifier)",
   "citationReadiness": "Citation stems and catalog locators; document details and provenance require verification before a final FRUS item source note.",
   "reviewFlagRows": 6258,
